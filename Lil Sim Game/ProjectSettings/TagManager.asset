@@ -6,14 +6,15 @@ TagManager:
   tags:
   - Interactable
   - Item
+  - Shopkeeper
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactable
   - Water
   - UI
-  - 
+  - Item
   - 
   - 
   - 

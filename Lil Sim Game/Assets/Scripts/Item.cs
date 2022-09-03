@@ -42,4 +42,18 @@ public class Item
         }
     }
 
+    public int GetPrice() //gets price of each item
+    {
+        switch (itemType)
+        {
+            case ItemType.Item1: return 10;
+            case ItemType.Item2: return 20;
+            case ItemType.Item3: return 30;
+            case ItemType.Item4: return 40;
+            case ItemType.Item5: return 50;
+            case ItemType.Item6: return 60;
+            default: return 0;
+        }
+    }
+
 }

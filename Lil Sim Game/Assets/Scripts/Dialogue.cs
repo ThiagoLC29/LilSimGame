@@ -9,13 +9,18 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textSpeed;
+    public bool inDialogue = false;
+    public bool alreadyTalked = false;
 
-    private int index;
+    private PlayerMovement player;
+    public int index;
 
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         textComponent.text = string.Empty;
+        alreadyTalked = false;
         StartDialogue();
     }
     void Update()
@@ -34,8 +39,10 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    void StartDialogue()
+    public void StartDialogue()
     {
+        //player.canMove = false;
+        inDialogue = true;
         index = 0;
         StartCoroutine(TypeLine());
     }
@@ -46,7 +53,7 @@ public class Dialogue : MonoBehaviour
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed); //the lower textSpeed, the faster it shows
+            yield return new WaitForSeconds(textSpeed); //the lower textSpeed, the faster it shows (0.1 seems fine)
         }
     }
 
@@ -58,8 +65,11 @@ public class Dialogue : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine (TypeLine());
         }
-        else
+        else //ending dialogue
         {
+            alreadyTalked = true;
+            inDialogue = false;
+            index = 0; //TODO: fix dialogue restarting with last line
             gameObject.SetActive(false);
         }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IShopCustomer
 {
     [Header("Toggles")]
     public bool canMove = true;
@@ -20,13 +20,21 @@ public class PlayerMovement : MonoBehaviour
     [Header("UI Related")]
     public GameObject inventoryPanel;
     public GameObject shop;
+    public GameObject shopDialogue;
     private Inventory inventory;
     [SerializeField] private InventoryUI inventoryUI;
+    public Dialogue dialogue;
 
+    [Header("Other Things")]
+    public int money;
+    public ShopUI shopUI;
+    public IShopCustomer shopCustomer;
 
     private void Awake()
     {
         inventory = new Inventory();
+        money = 50; //just for debugging
+        shopUI = FindObjectOfType<ShopUI>().GetComponent<ShopUI>();
         
     }
     void Update()
@@ -55,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
             OpenInventory();
             TalkToShopkeeper();
         }
+
+        if (Input.GetKeyDown(KeyCode.M)) //just for debugging
+            money += 50;
     }
 
     void Move() //Apply movement
@@ -64,13 +75,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Interactable")
+        if (collision.gameObject.layer == 3) //Layer 3: Interactable
         {
-            Debug.Log("Press E to talk to shopkeeper"); //TODO call another method to actually talk to shopkeeper
-            inShopRange = true;
+            Debug.Log("Press E to interact"); //TODO: actually show this message onscreen
+
+
+            if (collision.tag == "Shopkeeper")
+            {
+                inShopRange = true;
+            }
+
         }
 
-        if (collision.tag == "Item")
+        if (collision.gameObject.layer == 6) //Layer 6: Item
         {
             ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
 
@@ -80,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Interactable")
+        if (collision.gameObject.layer == 3) //Layer 3: Interactable
         {
             Debug.Log("Too far to talk to shopkeeper"); //TODO disable UI "press E"
             inShopRange = false;
@@ -98,13 +115,36 @@ public class PlayerMovement : MonoBehaviour
 
     void TalkToShopkeeper()
     {
-        shop.SetActive(!isShopOpen);
-        isShopOpen = !isShopOpen;
+        if (dialogue.alreadyTalked == false)
+        {
+            dialogue = shopDialogue.GetComponent<Dialogue>();
+            shopDialogue.SetActive(true);
+        }
+        
 
-        if (isShopOpen)
-            canMove = false;
-        else
-            canMove = true;
+        if (dialogue.inDialogue == false)
+        {
+            shop.SetActive(!isShopOpen);
+            isShopOpen = !isShopOpen;
 
+            if (isShopOpen)
+            {
+                canMove = false;
+                shopUI.Show(shopCustomer);
+
+            }
+            else
+            {
+                shopUI.Hide();
+                dialogue.alreadyTalked = false;
+                canMove = true;
+            }
+        }
+
+    }
+
+    public void BoughtItem(Item.ItemType itemType)
+    {
+        Debug.Log("Bought Item: " + itemType);
     }
 }

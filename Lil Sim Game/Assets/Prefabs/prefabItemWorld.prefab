@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 454890472798833557}
   - component: {fileID: 2917525426551184865}
   - component: {fileID: 8562891351743255548}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ItemWorldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 1866288958810398112}
   - component: {fileID: 9161115808347788380}
   - component: {fileID: 8267517802901184109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: prefabItemWorld
   m_TagString: Item
   m_Icon: {fileID: 0}
