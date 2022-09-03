@@ -20,7 +20,7 @@ public class Dialogue : MonoBehaviour
     }
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0)) //left click skips line 
         {
             if (textComponent.text == lines[index])
             {

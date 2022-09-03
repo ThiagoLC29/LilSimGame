@@ -17,10 +17,18 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDirection;
 
-    [Header("Other objects")]
-    public GameObject inventory;
+    [Header("UI Related")]
+    public GameObject inventoryPanel;
     public GameObject shop;
-    
+    private Inventory inventory;
+    [SerializeField] private InventoryUI inventoryUI;
+
+
+    private void Awake()
+    {
+        inventory = new Inventory();
+        
+    }
     void Update()
     {
         GetInputs();
@@ -61,6 +69,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Press E to talk to shopkeeper"); //TODO call another method to actually talk to shopkeeper
             inShopRange = true;
         }
+
+        if (collision.tag == "Item")
+        {
+            ItemWorld itemWorld = collision.GetComponent<ItemWorld>();
+
+            inventory.AddItem(itemWorld.GetItem());
+            itemWorld.DestroySelf();
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -73,8 +89,11 @@ public class PlayerMovement : MonoBehaviour
 
     void OpenInventory()
     {
-        inventory.SetActive(!isInventoyOpen);
+        inventoryPanel.SetActive(!isInventoyOpen);
         isInventoyOpen = !isInventoyOpen;
+
+        inventoryUI.SetInventory(inventory); //trying setting up here instead of Awake()
+
     }
 
     void TalkToShopkeeper()
