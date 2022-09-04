@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1683887691425267441}
   - component: {fileID: 1683887691425267446}
   - component: {fileID: 1731950309723054939}
+  - component: {fileID: 1165871906470259824}
+  - component: {fileID: 4447597788882470326}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -120,8 +122,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd617cfa2112e724d8b74bc5e1cc7310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 1
+  isAnythingOpen: 0
+  isInventoyOpen: 0
+  isShopOpen: 0
+  inShopRange: 0
   moveSpeed: 5
   rb: {fileID: 1683887691425267441}
+  inventoryPanel: {fileID: 0}
+  shop: {fileID: 0}
+  shopDialogue: {fileID: 0}
+  inventoryUI: {fileID: 0}
+  dialogue: {fileID: 0}
+  money: 0
+  shopUI: {fileID: 0}
 --- !u!61 &1731950309723054939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,3 +162,38 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75970244, y: 0.92980075}
   m_EdgeRadius: 0
+--- !u!114 &1165871906470259824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683887691425267445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9070f77f4f50c5e45b7dd663bce7ed36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinNr: 0
+  skins: []
+  spriteNr: 0
+--- !u!95 &4447597788882470326
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683887691425267445}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b4ad50250284b1546bb445e13a74aa4e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

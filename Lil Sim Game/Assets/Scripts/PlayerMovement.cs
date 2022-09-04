@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
     public bool isInventoyOpen = false;
     public bool isShopOpen = false;
     public bool inShopRange = false;
+    public bool isWalking = false;
 
     [Header("Movement")]
     public float moveSpeed;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
     public int money;
     public ShopUI shopUI;
     public IShopCustomer shopCustomer;
+    public Animator animator;
 
     private void Awake()
     {
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
     void Update()
     {
         GetInputs();
+        animator.SetBool("isWalking", isWalking);
     }
 
     private void FixedUpdate()
@@ -52,6 +55,15 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
     {
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
+
+        if (moveX > 0) //flips player right
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        if (moveX < 0) //flips player left
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
 
         moveDirection = new Vector2(moveX, moveY).normalized;
 
@@ -71,6 +83,17 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
     void Move() //Apply movement
     {
         rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.deltaTime);
+
+        
+
+        if (Input.GetAxisRaw("Horizontal") != 0f || Input.GetAxisRaw("Vertical") != 0f)
+        {
+            isWalking = true;
+        }
+        else
+            isWalking = false;
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
