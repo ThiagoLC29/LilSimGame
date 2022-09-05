@@ -44,3 +44,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Sorting1
+    uniqueID: 1346199
+    locked: 0
