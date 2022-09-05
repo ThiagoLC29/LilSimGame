@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
     public GameObject inventoryPanel;
     public GameObject shop;
     public GameObject shopDialogue;
+    public GameObject pressEShop;
     private Inventory inventory;
     [SerializeField] private InventoryUI inventoryUI;
     public Dialogue dialogue;
@@ -38,6 +39,11 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
         money = 50; //just for debugging
         shopUI = FindObjectOfType<ShopUI>().GetComponent<ShopUI>();
         
+    }
+    private void Start()
+    {
+        inventoryPanel.SetActive(false);
+
     }
     void Update()
     {
@@ -106,6 +112,7 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
             if (collision.tag == "Shopkeeper")
             {
                 inShopRange = true;
+                pressEShop.SetActive(true);
             }
 
         }
@@ -122,8 +129,8 @@ public class PlayerMovement : MonoBehaviour, IShopCustomer
     {
         if (collision.gameObject.layer == 3) //Layer 3: Interactable
         {
-            Debug.Log("Too far to talk to shopkeeper"); //TODO disable UI "press E"
             inShopRange = false;
+            pressEShop.SetActive(false);
         }
     }
 

@@ -8,7 +8,7 @@ public class ShopUI : MonoBehaviour
 {
     private Transform container;
     private Transform shopItemTemplate;
-    public Item item, item2;
+    public Item item, item2, item3;
     private IShopCustomer shopCustomer;
     public Item.ItemType type;
 
@@ -21,8 +21,9 @@ public class ShopUI : MonoBehaviour
 
     private void Start()
     {
-        CreateItemButton(Item.ItemType.Item1, item.GetSprite(), "Item1", item.GetPrice(), 0);
-        CreateItemButton(Item.ItemType.Item2, item2.GetSprite(), "Item2", item2.GetPrice(), 1);
+        CreateItemButton(Item.ItemType.Item1, item.GetSprite(), "Blue Outfit", item.GetPrice(), 0);
+        CreateItemButton(Item.ItemType.Item2, item2.GetSprite(), "Red Outfit", item2.GetPrice(), 1);
+        CreateItemButton(Item.ItemType.Item3, item3.GetSprite(), "Purple Outfit", item3.GetPrice(), 2);
 
         Hide();
         shopItemTemplate.gameObject.SetActive(false);

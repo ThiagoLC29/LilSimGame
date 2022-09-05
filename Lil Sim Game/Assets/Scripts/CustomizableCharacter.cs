@@ -8,6 +8,7 @@ public class CustomizableCharacter : MonoBehaviour
     // Link to video explaining this script: https://www.youtube.com/watch?v=t2UUHI4eudI
     // A few changes were made to fit better this project
     public Animator animator;
+    public Item item;
 
     // This script should be added to your main character and won't be used for accessories
 
@@ -62,6 +63,12 @@ public class CustomizableCharacter : MonoBehaviour
     public void SkinMin()
     {
         skinNr--;
+    }
+
+    public void EquipSkin() //not working
+    {
+        item.GetItemIndex();
+        skinNr = item.itemIndex;
     }
 }
 

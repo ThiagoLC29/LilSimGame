@@ -10,6 +10,8 @@ public class InventoryUI : MonoBehaviour
     private Inventory inventory;
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
+    public CustomizableCharacter custom;
+    public Item item;
 
     private void Awake()
     {
@@ -31,7 +33,7 @@ public class InventoryUI : MonoBehaviour
         RefreshInventoryItems();
     }
 
-    private void RefreshInventoryItems()
+    public void RefreshInventoryItems()
     {
         foreach (Transform child in itemSlotContainer)
         {
@@ -45,6 +47,9 @@ public class InventoryUI : MonoBehaviour
 
         foreach (Item item in inventory.GetItemList())
         {
+            this.item = item; //button stuff
+
+
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
@@ -73,5 +78,23 @@ public class InventoryUI : MonoBehaviour
 
     }
 
+    public void EquipSkin() //TODO somehow remake this in the itemslottemplate script
+    {
+        //TODO: if inside shop area, sell
+        item.GetItemIndex();
+        custom.skinNr = item.itemIndex;
+        item.amount -= 1;
+
+
+        //if (item.amount > 1)
+        //{
+        //    item.amount -= 1;
+        //}
+        //else
+        //{
+        //    Destroy(gameObject);
+        //}
+        RefreshInventoryItems();
+    }
 
 }

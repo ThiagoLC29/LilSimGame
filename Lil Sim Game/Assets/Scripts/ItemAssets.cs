@@ -14,7 +14,7 @@ public class ItemAssets : MonoBehaviour
 
     public Transform prefabItemWorld;
 
-    public Sprite sprite1, sprite2, sprite3, sprite4, sprite5, sprite6; //TODO change names to match item names
+    public Sprite sprite1, sprite2, sprite3; //TODO change names to match item names
 
 
 }

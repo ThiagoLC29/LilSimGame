@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 875610a9aa35a5543b620f666ed421cc, type: 3}
+  m_Sprite: {fileID: 1034210799, guid: 5468469936843644a9734a6042176a33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,7 +97,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683887691425267445}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   isInventoyOpen: 0
   isShopOpen: 0
   inShopRange: 0
+  isWalking: 0
   moveSpeed: 5
   rb: {fileID: 1683887691425267441}
   inventoryPanel: {fileID: 0}
@@ -136,6 +137,7 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   money: 0
   shopUI: {fileID: 0}
+  animator: {fileID: 4447597788882470326}
 --- !u!61 &1731950309723054939
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,18 +151,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0013499856, y: 0.018899813}
+  m_Offset: {x: 0, y: -0.55}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.656, y: 1.552}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75970244, y: 0.92980075}
+  m_Size: {x: 0.64, y: 0.45}
   m_EdgeRadius: 0
 --- !u!114 &1165871906470259824
 MonoBehaviour:
@@ -174,9 +176,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9070f77f4f50c5e45b7dd663bce7ed36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skinNr: 0
-  skins: []
-  spriteNr: 0
+  animator: {fileID: 4447597788882470326}
+  skinNr: 3
+  skins:
+  - sprites:
+    - {fileID: 1034210799, guid: 5468469936843644a9734a6042176a33, type: 3}
+    - {fileID: -1383725642, guid: 5468469936843644a9734a6042176a33, type: 3}
+    - {fileID: 1141451013, guid: 5468469936843644a9734a6042176a33, type: 3}
+  - sprites:
+    - {fileID: -1218731221, guid: 251d6e831cca46941ba762060b594c64, type: 3}
+    - {fileID: -1395787978, guid: 251d6e831cca46941ba762060b594c64, type: 3}
+    - {fileID: -1849297137, guid: 251d6e831cca46941ba762060b594c64, type: 3}
+  - sprites:
+    - {fileID: -1415934986, guid: 4b23810ad569c51459222515324013ce, type: 3}
+    - {fileID: 1701009553, guid: 4b23810ad569c51459222515324013ce, type: 3}
+    - {fileID: 885663542, guid: 4b23810ad569c51459222515324013ce, type: 3}
+  spriteNr: 1
 --- !u!95 &4447597788882470326
 Animator:
   serializedVersion: 4
