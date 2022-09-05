@@ -1299,9 +1299,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabItemWorld: {fileID: 7950016614450019539, guid: b3d67013f20edcc48873f7ab16e9919c, type: 3}
-  sprite1: {fileID: 21300000, guid: b68ec46fbaeb7f24f8addc94186766af, type: 3}
-  sprite2: {fileID: 21300000, guid: d88763b09020adf4cb99f25425355842, type: 3}
-  sprite3: {fileID: 21300000, guid: de647f038d6f0fc4da9817454cd6ab34, type: 3}
+  sprite1: {fileID: 21300000, guid: d7a126b0e89827b4a9e4c5d361ed9fa1, type: 3}
+  sprite2: {fileID: 21300000, guid: 8da4dea70cd27844da5d293123ae6897, type: 3}
+  sprite3: {fileID: 21300000, guid: 22d5fbec4a964724bbe98240aa03d8c9, type: 3}
 --- !u!4 &1225829270
 Transform:
   m_ObjectHideFlags: 0
